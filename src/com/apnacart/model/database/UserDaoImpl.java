@@ -11,11 +11,11 @@ public class UserDaoImpl implements UserDao {
 	public static UserPojo userObj = new UserPojo();
 	public void connect() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ShoppingApplication", "root", "smrajawat");		
+        con = DriverManager.getConnection("jdbc:mysql://my-first-database.cbem1g9mbvmp.us-east-2.rds.amazonaws.com:3306/ShoppingApplication", "master", "mastermaster");		
 	}
 	
 	public void registerUser(UserPojo userObj) throws ClassNotFoundException, SQLException {
-		String insertStatement = "insert into UserDetails (UserName,Password) values (?,?);";
+		String insertStatement = "insert into UserDetails (username,password) values (?,?);";
 		PreparedStatement preparedStatement = con.prepareStatement(insertStatement);
 		preparedStatement.setString(1, userObj.getName());
 		preparedStatement.setString(2, userObj.getPassword());
